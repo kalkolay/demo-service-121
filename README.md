@@ -4,6 +4,8 @@
 ___
 ### UPD: Актуальная инструкция
 
+[![Build](https://github.com/kalkolay/demo-service-121/actions/workflows/ci.yaml/badge.svg)](https://github.com/kalkolay/demo-service-121/actions/workflows/ci.yaml)
+
 #### Запуск проекта
 
 1. ~~Переключиться на ветку **dev**~~ [_скорее всего опционально_]
@@ -13,7 +15,7 @@ ___
 5. `mvn clean install`
 6. В IDE нажать _Edit configurations_ -> _Active profiles_ и написать `dev`
 
-_Если по-прежнему не сработало, можно попробовать переоткрыть проект._
+_Если по-прежнему не сработало, можно попробовать переоткрыть проект и попробовать заново 4 и 5 шаги._
 
 #### Подключение сторонней библиотеки
 
