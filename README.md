@@ -1,6 +1,28 @@
 # Demo service
 
 ## Launch notes
+___
+### UPD: Актуальная инструкция
+
+#### Запуск проекта
+
+1. ~~Переключиться на ветку **dev**~~ [_скорее всего опционально_]
+2. Создать токен для чтения пакетов (тыкнуть [сюда](https://github.com/settings/tokens/new) и поставить галочку только на _read:packages_)
+3. Добавить локально две переменные окружения **GITHUB_USERNAME**, **GITHUB_TOKEN** (на маке я просто писал в терминале `echo GITHUB_USERNAME="kalkolay"` и аналогично токен)
+4. `mvn install -U -s settings.xml`
+5. `mvn clean install`
+6. В IDE нажать _Edit configurations_ -> _Active profiles_ и написать `dev`
+
+_Если по-прежнему не сработало, можно попробовать переоткрыть проект._
+
+#### Подключение сторонней библиотеки
+
+1. `cd` в корень директории демосервиса и `git clone https://github.com/andrsuh/tiny-event-sourcing.git`
+2. Билдим склонированный проект: `cd tiny-event-sourcing` и правой кнопкой на **pom.xml** -> жмём на предпоследнюю опцию _Add to Maven_ или что-то такое, делаем `mvn install` и билдим проект
+3. Возвращаемся в корневую папку нашего проекта, добавляем файл _tiny-event-sourcing-lib/target/tiny-event-sourcing-lib-2.0.1-SNAPSHOT.jar_ командой: `mvn install:install-file -Dfile=<path-to-file> -DpomFile=<path-to-pomfile>`
+4. Делаем как для запуска проекта `mvn install -U -s settings.xml && mvn clean install`
+5. Билдим наш проект, для теста можно написать `import ru.quipy.*` (где-нибудь в сорцах, но не в мэйне) и посмотреть подсветит ли идея эту строку красным
+___
 * Create template repository with the name `GROUP-ID`-`YOUR-APP-NAME` and select this organization as an account
 * Rename `name`, `description`, `github` to corresponding values in `pom.xml`
 * Rename `postgres-app` to `postgres-YOUR-APP-NAME`, `image` to `ghcr.io/USERNAME/REPOSITORY` in `docker-compose.yml`

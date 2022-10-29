@@ -74,6 +74,13 @@ jobs:
             type=raw,value=${{ steps.version.outputs.version }},enable=${{ endsWith(github.ref, 'main') }}
             type=raw,value=latest,enable=${{ endsWith(github.ref, 'main') }}
 
+      - name: Configure tiny-event-sourcing-lib
+        id: configure
+        run: |
+          git clone https://github.com/andrsuh/tiny-event-sourcing.git
+          cd tiny-event-sourcing && mvn install
+          cd .. && mvn install:install-file -Dfile=tiny-event-sourcing/tiny-event-sourcing-lib/target/tiny-event-sourcing-lib-2.0.1-SNAPSHOT.jar -DpomFile=tiny-event-sourcing/tiny-event-sourcing-lib/pom.xml
+
       - name: Build with Maven
         env:
           GITHUB_USERNAME: ${{ github.actor }}
