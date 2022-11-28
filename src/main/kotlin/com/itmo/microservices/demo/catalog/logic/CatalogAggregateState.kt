@@ -47,9 +47,9 @@ data class Order(
 )
 
 data class Product(
-    var productId: UUID? = UUID.randomUUID(),
-    var productName: String? = null,
-    var price: Double? = null,
-    var count: Int? = null,
+    var productId: UUID = UUID.randomUUID(),
+    var productName: String = "",
+    var price: Double = 0.0,
+    var count: Int = 0,
     var description: String? = null
 )
