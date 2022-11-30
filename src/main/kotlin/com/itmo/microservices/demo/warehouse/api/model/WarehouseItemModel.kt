@@ -5,5 +5,9 @@ import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class WarehouseItemModel(
-    val id: UUID?,
+    val id: UUID,
+    val title: String,
+    val description: String?,
+    val price: Int = 100,
+    val amount: Int
 )

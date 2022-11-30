@@ -2,6 +2,7 @@ package com.itmo.microservices.demo.warehouse.api.controller
 
 import WarehouseAggregate
 import com.itmo.microservices.demo.warehouse.Warehouse
+import com.itmo.microservices.demo.warehouse.api.model.WarehouseItemModel
 import org.springframework.web.bind.annotation.*
 import ru.quipy.core.EventSourcingService
 import java.util.*
@@ -11,6 +12,6 @@ import java.util.*
 class WarehouseController( val warehouseEventSourcingService: EventSourcingService<UUID, WarehouseAggregate, Warehouse>) {
 
 
-    @GetMapping("")
-    fun allItems(): Nothing = TODO("Not yet implemented")
+    @GetMapping("/items")
+    fun allItems(): List<WarehouseItemModel> = TODO("Not yet implemented")
 }
