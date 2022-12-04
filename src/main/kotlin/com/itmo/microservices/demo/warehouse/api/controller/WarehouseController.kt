@@ -12,6 +12,6 @@ import java.util.*
 class WarehouseController( val warehouseEventSourcingService: EventSourcingService<UUID, WarehouseAggregate, Warehouse>) {
 
 
-    @GetMapping("/items")
+    @GetMapping("/items?available={available}&size={size}")
     fun allItems(): List<WarehouseItemModel> = TODO("Not yet implemented")
 }
