@@ -4,7 +4,7 @@
 ___
 ### UPD: Актуальная инструкция
 
-[![Build](https://github.com/kalkolay/demo-service-121/actions/workflows/ci.yaml/badge.svg)](https://github.com/kalkolay/demo-service-121/actions/workflows/ci.yaml)
+<!-- [![Build](https://github.com/kalkolay/demo-service-121/actions/workflows/ci.yaml/badge.svg)](https://github.com/kalkolay/demo-service-121/actions/workflows/ci.yaml) -->
 
 #### Запуск проекта
 
