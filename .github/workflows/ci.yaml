@@ -81,25 +81,25 @@ jobs:
           cd tiny-event-sourcing && mvn install
           cd .. && mvn install:install-file -Dfile=tiny-event-sourcing/tiny-event-sourcing-lib/target/tiny-event-sourcing-lib-2.0.1-SNAPSHOT.jar -DpomFile=tiny-event-sourcing/tiny-event-sourcing-lib/pom.xml
 
-      - name: Build with Maven
-        env:
-          GITHUB_USERNAME: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: build
-        run: |
-          mvn -B package -DskipTests -s settings.xml
-          JAR_PATH=$(mvn help:evaluate -Dexpression=project.build.finalName -q -DforceStdout)
-          echo ::set-output name=jar::${JAR_PATH}.jar
-
-      - name: Build and push image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          builder: ${{ steps.buildx.outputs.name }}
-          build-args: |
-            JAR_FILE=target/${{ steps.build.outputs.jar }}
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha, scope=${{ github.workflow }}
-          cache-to: type=gha, scope=${{ github.workflow }}
+#      - name: Build with Maven
+#        env:
+#          GITHUB_USERNAME: ${{ github.actor }}
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        id: build
+#        run: |
+#          mvn -B package -DskipTests -s settings.xml
+#          JAR_PATH=$(mvn help:evaluate -Dexpression=project.build.finalName -q -DforceStdout)
+#          echo ::set-output name=jar::${JAR_PATH}.jar
+#
+#      - name: Build and push image
+#        uses: docker/build-push-action@v3
+#        with:
+#          context: .
+#          builder: ${{ steps.buildx.outputs.name }}
+#          build-args: |
+#            JAR_FILE=target/${{ steps.build.outputs.jar }}
+#          push: true
+#          tags: ${{ steps.meta.outputs.tags }}
+#          labels: ${{ steps.meta.outputs.labels }}
+#          cache-from: type=gha, scope=${{ github.workflow }}
+#          cache-to: type=gha, scope=${{ github.workflow }}
