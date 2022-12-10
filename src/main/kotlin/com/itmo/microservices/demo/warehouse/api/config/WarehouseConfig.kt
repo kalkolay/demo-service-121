@@ -1,7 +1,7 @@
 package com.itmo.microservices.demo.warehouse.api.config
 
 import WarehouseAggregate
-import com.itmo.microservices.demo.warehouse.Warehouse
+import com.itmo.microservices.demo.warehouse.logic.WarehouseAggregateState
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -16,6 +16,6 @@ class WarehouseConfig {
     private lateinit var eventSourcingServiceFactory: EventSourcingServiceFactory
 
     @Bean
-    fun warehouseEventSourcingService(): EventSourcingService<UUID, WarehouseAggregate, Warehouse> =
+    fun warehouseEventSourcingService(): EventSourcingService<UUID, WarehouseAggregate, WarehouseAggregateState> =
         eventSourcingServiceFactory.create()
 }
